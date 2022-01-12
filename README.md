@@ -13,10 +13,11 @@ Five years of daily Bitcoin adjusted close price data was used as the primary so
 * `Close_-1` = The closing price of the previous day.
 * `Delta` = The daily percentage difference in price `(today - yesterday) / yesterday`.
 * `Close_-1_Delta` = The `Delta` value for the previous day.
-* `Delta_Class_Numeric` = Classifier based on the `Close_-1_Delta` values.
+* `Delta_Class_Numeric` = Classifier based on the `Close_-1_Delta` values. This is to be tested as a target variable.
     * 1 = `Close_-1_Delta >= 0.02`
     * -1 = `Close_-1_Delta <= 0.02`
     * 0 = All else
+* `AVG_Weighted_Future_Return` = This metric aims to show the average short-term return that can be expected for any given day. This is to be tested as a target variable. This is calculated as: `((Adj Close Tomorrow - Adj Close Today) / Adj Close Today * 0.6) + ((Adj Close +3 Days - Adj Close Today) / Adj Close Today * 0.3) + ((Adj Close +5 Days - Adj Close Today) / Adj Close Today * 0.1)`.
 * `Gain_Run` = Binary indicator that is equal to 1 if the last three days (inclusive of the target row) of `Close_-1_Delta` are positive. Meaning, this is flagged if there are three consecutive days of gains leading into the given row's date.
 * `Gain_Loss` = Binary indicator that is equal to 1 if the last three days (inclusive of the target row) of `Close_-1_Delta` are negative. Meaning, this is flagged if there are three consecutive days of losses leading into the given row's date.
 * `7-Day_Delta_AVG` = Rolling average of the previous seven days (inclusive of today) values of `Close_-1_Delta`. This value shows the average change in price for the seven days leading up to the target row's date. Also available for 30-day average.
