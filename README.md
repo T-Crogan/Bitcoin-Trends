@@ -1,7 +1,7 @@
 # Bitcoin-Trends
 This repository was created to house my submission for the Duke Fuqua MSQM Winter Data Competition. 
 
-Historical Bitcoin data was acquired from Yahoo Finance: https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD.
+Historical Bitcoin data (in the file **'BTC-USD.csv'**) was acquired from Yahoo Finance: https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD.
 
 Five years of daily Bitcoin adjusted close price data was used as the primary source of information. The daily volume was also retained in the dataset. Many additional columns were calculated using the closing price
 
