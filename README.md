@@ -5,6 +5,16 @@ Historical Bitcoin data (in the file **'BTC-USD.csv'**) was acquired from Yahoo 
 
 Five years of daily Bitcoin adjusted close price data was used as the primary source of information. The daily volume was also retained in the dataset. Many additional columns were calculated using the closing price
 
+# File Descriptions
+
+* **BTC-USD.csv** = Base file pulled from Yahoo Finance: https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD.
+* **Bitcoin Analysis.ipynb** = Code used to transform and visualise base dataset **BTC-USD.csv**. Final results stored as **btc_transform.csv**.
+* **Bitcoin Train Models.ipynb** = Code used to train and test various models using **btc-transform.csv**. 
+* **DTcbin_Final.xlsx** = File with Decision Tree - Classifier prediction results accompanied by return calculations.
+* **LR_Final.xlsx** = File with Linear Regression prediction results accompanied by return calculations.
+* **RFcbin_Final.xlsx** = File with Random Forrest - Classifier results accompanied by return calculations.
+* **btc_transform.csv** = Output of **Bitcoin Analysis.ipynb** that is used as the dataset to train models in **Bitcoin Train Models.ipynb**.
+
 # Data Dictionary
 
 * `Date` = The date the `Adj Close` was recorded.
@@ -14,8 +24,7 @@ Five years of daily Bitcoin adjusted close price data was used as the primary so
 * `Delta` = The daily percentage difference in price `(today - yesterday) / yesterday`.
 * `Close_-1_Delta` = The `Delta` value for the previous day.
 * `Delta_Class_Numeric` = Classifier based on the `Close_-1_Delta` values. This is to be tested as a target variable.
-    * 1 = `Close_-1_Delta >= 0.02`
-    * -1 = `Close_-1_Delta <= 0.02`
+    * 1 = `Close_-1_Delta > 0`
     * 0 = All else
 * `AVG_Weighted_Future_Return` = This metric aims to show the average short-term return that can be expected for any given day. This is to be tested as a target variable. This is calculated as: `((Adj Close Tomorrow - Adj Close Today) / Adj Close Today * 0.6) + ((Adj Close +3 Days - Adj Close Today) / Adj Close Today * 0.3) + ((Adj Close +5 Days - Adj Close Today) / Adj Close Today * 0.1)`.
 * `Gain_Run` = Binary indicator that is equal to 1 if the last three days (inclusive of the target row) of `Close_-1_Delta` are positive. Meaning, this is flagged if there are three consecutive days of gains leading into the given row's date.
